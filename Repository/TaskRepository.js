@@ -1,0 +1,10 @@
+class TaskRepository {
+    createTask() {
+
+    }
+
+    completedTask() {
+
+    }
+
+}
