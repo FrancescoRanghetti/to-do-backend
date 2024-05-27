@@ -1,4 +1,4 @@
-const connection = require('../database')
+const connection = require('../database');
 
 class TagRepository {
     createDefaultTag(idUser, callback) {
@@ -9,7 +9,7 @@ class TagRepository {
                 if (error) {
                     return callback(error);
                 }
-                callback(null, results[0])
+                callback(null, results[0]);
             })
         }
     }
@@ -18,12 +18,12 @@ class TagRepository {
         const sql = 'SELECT * FROM tag WHERE idUser = ?';
         connection.query(sql, [idUser], (error, results) => {
             if (error) {
-                return callback(error)
+                return callback(error);
             }
             if (results.length === 0) {
                 return callback(null, null);
             }
-            callback(null, results)
+            callback(null, results);
         });
     }
 
@@ -47,6 +47,16 @@ class TagRepository {
         });
     }
 
+    addTagByIdUser(name, idUser, callback) {
+        const sql = 'INSERT INTO tag (name, idUser) VALUES (?, ?)';
+        connection.query(sql, [name, idUser], (error, results) => {
+            if (error) {
+                return callback(error);
+            }
+            callback(null, {id: results.insertId, name: name, idUser: idUser});
+        });
+    }
+
     renameTag() {
         // ToDO vedere se implementare anche il rename del tag
     }
@@ -57,7 +67,7 @@ class TagRepository {
             if (error) {
                 return callback(error)
             }
-            callback(null, result)
+            callback(null, result);
         })
     }
 }

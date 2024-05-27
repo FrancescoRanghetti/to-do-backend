@@ -12,8 +12,6 @@ class UserService {
     loginUser(username, password, callback) {
         userRepository.loginUser(username, password, callback);
     }
-
-    // Altri metodi come update, delete, ecc.
 }
 
 module.exports = new UserService();

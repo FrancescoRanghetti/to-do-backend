@@ -3,11 +3,11 @@ const userRepository = require('../Repository/UserRepository');
 
 class TagService {
     createDefaultTag(idUser, callback) {
-        tagRepository.createDefaultTag(idUser, callback)
+        tagRepository.createDefaultTag(idUser, callback);
     }
 
     getAllTag(idUser, callback) {
-        tagRepository.getAllTag(idUser, callback)
+        tagRepository.getAllTag(idUser, callback);
     }
 
     addTag(username, name, callback) {
@@ -23,9 +23,13 @@ class TagService {
         });
     }
 
+    addTagByIdUser(name, idUser, callback) {
+        tagRepository.addTagByIdUser(name, idUser, callback);
+    }
+
     deleteTag(idUser, name, callback) {
-        tagRepository.deleteTag(idUser, name, callback)
+        tagRepository.deleteTag(idUser, name, callback);
     }
 }
 
-module.exports = new TagService()
+module.exports = new TagService();

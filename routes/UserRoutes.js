@@ -2,15 +2,6 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../Service/UserService');
 
-// Route per creare un nuovo utente
-// router.post('/addUser', (req, res) => {
-//   userService.createUser(req.body, (error, user) => {
-//     if (error) {
-//       return res.status(500).json({ error: error.message });
-//     }
-//     res.status(201).json(user);
-//   });
-// });
 router.post('/addUser', (req, res) => {
   console.log('Received user data:', req.body); // Log per vedere i dati ricevuti
   userService.createUser(req.body, (error, user) => {
@@ -20,7 +11,6 @@ router.post('/addUser', (req, res) => {
     res.status(201).json(user);
   });
 });
-
 
 router.get('/getUser/:username', (req, res) => {
   userService.getUserById(req.params.username, (error, user) => {
@@ -45,7 +35,5 @@ router.get('/loginUser/:username/:password', (req, res) => {
     res.json(user);
   });
 });
-
-// Altre route come update, delete, ecc.
 
 module.exports = router;

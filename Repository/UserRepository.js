@@ -40,8 +40,6 @@ class UserRepository {
             callback(null, user);
         });
     }
-
-    // Altri metodi come update, delete, ecc.
 }
 
 module.exports = new UserRepository();

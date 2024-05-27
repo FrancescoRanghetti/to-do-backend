@@ -9,7 +9,7 @@ class ListRepository {
                 if (error) {
                     return callback(error);
                 }
-                callback(null, results[0])
+                callback(null, results[0]);
             })
         }
     }
@@ -23,7 +23,7 @@ class ListRepository {
             if (results.length === 0) {
                 return callback(null, null);
             }
-            callback(null, results)
+            callback(null, results);
         });
     }
 
@@ -37,20 +37,37 @@ class ListRepository {
         });
     }
 
+    getIdListByName(name, idUser, callback) {
+        const sql = 'SELECT * FROM list WHERE name = ? AND idUser = ?';
+        console.log(name)
+        console.log(idUser)
+        connection.query(sql, [name, idUser], (error, results) => {
+            if (error) {
+                console.log("error")
+                return callback(error);
+            }
+            if (results.length === 0) {
+                console.log("length")
+                return callback(null, null);
+            }
+            callback(null, results);
+        });
+    }
+
     renameList() {
         // ToDO vedere se implementare anche il rename delle liste
     }
 
 
     deleteList(name, idUser, callback) {
-        const sql = 'DELETE FROM list WHERE idUser = ? AND name = ?'
+        const sql = 'DELETE FROM list WHERE idUser = ? AND name = ?';
         connection.query(sql, [idUser, name], (error, result) => {
             if (error) {
                 return callback(error)
             }
-            callback(null, result)
+            callback(null, result);
         })
     }
 }
 
-module.exports = new ListRepository()
+module.exports = new ListRepository();

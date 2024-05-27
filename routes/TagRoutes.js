@@ -7,7 +7,7 @@ router.post('/createDefaultTag/:idUser', (req, res) => {
         if (error) {
             return res.status(500).json({error: error.message});
         }
-        res.status(201).json(tag)
+        res.status(201).json(tag);
     })
 })
 
@@ -16,7 +16,7 @@ router.get('/getAllTag/:idUser', (req, res) => {
         if (error) {
             return res.status(500).json({error: error.message});
         }
-        res.status(200).json(tag)
+        res.status(200).json(tag);
     })
 })
 
@@ -25,7 +25,16 @@ router.post('/addTag/:username/:name', (req, res) => {
         if (error) {
             return res.status(500).json({error: error.message});
         }
-        res.status(200).json(tag)
+        res.status(201).json(tag);
+    })
+})
+
+router.post('/addTagByIdUser/:name/:idUser', (req, res) => {
+    tagService.addTagByIdUser(req.params.name, req.params.idUser, (error, tag) => {
+        if (error) {
+            return res.status(500).json({error: error.message});
+        }
+        res.status(201).json(tag);
     })
 })
 
@@ -34,7 +43,7 @@ router.delete('/deleteTag/:idUser/:name', (req, res) => {
         if (error) {
             return res.status(500).json({error: error.message});
         }
-        res.status(200).json(tag)
+        res.status(200).json(tag);
     })
 })
 
