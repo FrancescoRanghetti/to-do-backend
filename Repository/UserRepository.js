@@ -3,7 +3,6 @@ const User = require('../models/User');
 
 class UserRepository {
     createUser(user, callback) {
-        console.log(user)
         const sql = 'INSERT INTO user (name, lastName, username, password) VALUES (?, ?, ?, ?)';
         connection.query(sql, [user.name, user.lastName, user.username, user.password], (error, results) => {
             if (error) {

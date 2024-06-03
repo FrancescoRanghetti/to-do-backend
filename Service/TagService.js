@@ -11,7 +11,6 @@ class TagService {
     }
 
     addTag(username, name, callback) {
-        console.log(username)
         userRepository.getUserById(username, (error, user) => {
             if (error) {
                 return callback(error);

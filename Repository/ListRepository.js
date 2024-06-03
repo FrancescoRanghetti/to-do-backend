@@ -39,25 +39,17 @@ class ListRepository {
 
     getIdListByName(name, idUser, callback) {
         const sql = 'SELECT * FROM list WHERE name = ? AND idUser = ?';
-        console.log(name)
-        console.log(idUser)
         connection.query(sql, [name, idUser], (error, results) => {
             if (error) {
-                console.log("error")
+                console.log("Error: " + error)
                 return callback(error);
             }
             if (results.length === 0) {
-                console.log("length")
                 return callback(null, null);
             }
             callback(null, results);
         });
     }
-
-    renameList() {
-        // ToDO vedere se implementare anche il rename delle liste
-    }
-
 
     deleteList(name, idUser, callback) {
         const sql = 'DELETE FROM list WHERE idUser = ? AND name = ?';

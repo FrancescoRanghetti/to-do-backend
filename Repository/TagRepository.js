@@ -57,10 +57,6 @@ class TagRepository {
         });
     }
 
-    renameTag() {
-        // ToDO vedere se implementare anche il rename del tag
-    }
-
     deleteTag(idUser, name, callback) {
         const sql = 'DELETE FROM tag WHERE idUser = ? AND name = ?'
         connection.query(sql, [idUser, name], (error, result) => {
